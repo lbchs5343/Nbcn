@@ -30,7 +30,7 @@
  *  java.lang.Object
  *  java.lang.String
  */
-package jiesheng;
+package lbchs;
 
 import android.app.Activity;
 import android.app.ProgressDialog;
@@ -54,19 +54,19 @@ import androidx.appcompat.app.ActionBar;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
 import java.io.InputStream;
-import jiesheng.全局方法类;
-import jiesheng.单选对话框;
-import jiesheng.可视化组件;
-import jiesheng.后台服务;
-import jiesheng.存储卡操作;
-import jiesheng.安卓应用;
-import jiesheng.对话框;
-import jiesheng.意图;
-import jiesheng.日期选择框;
-import jiesheng.时间选择框;
-import jiesheng.组件容器;
-import jiesheng.输入对话框;
-import jiesheng.颜色选择框;
+import lbchs.全局方法类;
+import lbchs.单选对话框;
+import lbchs.可视化组件;
+import lbchs.后台服务;
+import lbchs.存储卡操作;
+import lbchs.安卓应用;
+import lbchs.对话框;
+import lbchs.意图;
+import lbchs.日期选择框;
+import lbchs.时间选择框;
+import lbchs.组件容器;
+import lbchs.输入对话框;
+import lbchs.颜色选择框;
 
 public class 兼容窗口
 extends AppCompatActivity {

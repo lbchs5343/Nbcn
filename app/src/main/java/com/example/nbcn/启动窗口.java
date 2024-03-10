@@ -1,17 +1,20 @@
 package com.example.nbcn;
 
 
+import android.app.Activity;
+
 import android.os.Bundle;
 
-import jiesheng.可视化组件;
-import jiesheng.按钮;
-import jiesheng.窗口;
-import jiesheng.编辑框;
-import jiesheng.自适应布局;
+import lbchs.可视化组件;
+import lbchs.应用操作;
+import lbchs.按钮;
+import lbchs.窗口;
+import lbchs.编辑框;
+import lbchs.自适应布局;
 
 public class 启动窗口 extends 窗口 {
     public 按钮 按钮1;
-
+private final Activity 本对象=this;
     public 编辑框 编辑框1;
 
     @Override
@@ -28,7 +31,14 @@ public class 启动窗口 extends 窗口 {
         按钮1.置被单击(new 可视化组件.被单击() {
             @Override
             public void 被单击() {
+                应用操作.打开应用(本对象,"com.example.a14api");
                 弹出提示("按钮1" + 按钮1.宽度() + "编辑框1" + 编辑框1.组件索引());
+            }
+        });
+        编辑框1.置内容被改变(new 编辑框.内容被改变() {
+            @Override
+            public void 内容被改变(String var1) {
+                弹出提示("内容变成"+var1);
             }
         });
     }

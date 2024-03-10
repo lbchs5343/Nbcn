@@ -1,4 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest>
 
+
+
+    <uses-permission name="android.permission.READ_PRIVILEGED_PHONE_STATE" />
 </manifest>
