@@ -3,5 +3,5 @@
 
 
 
-    <uses-permission name="android.permission.READ_PRIVILEGED_PHONE_STATE" />
+
 </manifest>

@@ -25,7 +25,7 @@ import java.io.File;
 
 public class 程序崩溃处理
         implements Thread.UncaughtExceptionHandler {
-    private  final 程序崩溃处理 INSTANCE = new 程序崩溃处理();
+    private static  final 程序崩溃处理 INSTANCE = new 程序崩溃处理();
     private Thread.UncaughtExceptionHandler mDefaultHandler;
     private Context mContext;
     private String path;
@@ -33,7 +33,7 @@ public class 程序崩溃处理
     private 程序崩溃处理() {
     }
 
-    public  void 初始化(Context context, String string) {
+    public static void 初始化(Context context, String string) {
         INSTANCE.init(context, string);
     }
 

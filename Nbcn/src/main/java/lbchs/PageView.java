@@ -23,7 +23,7 @@ import android.database.DataSetObserver;
 import android.graphics.Canvas;
 import android.graphics.Rect;
 import android.graphics.drawable.Drawable;
-import android.os.Build;
+
 import android.os.Parcel;
 import android.os.Parcelable;
 import android.os.SystemClock;
@@ -381,7 +381,7 @@ public class PageView extends ViewGroup {
             setScrollingCacheEnabled(false);
             return;
         }
-        if (!always && mCurItem == item && mItems.size() != 0) {
+        if (!always && mCurItem == item && !mItems.isEmpty()) {
             setScrollingCacheEnabled(false);
             return;
         }
@@ -658,7 +658,7 @@ public class PageView extends ViewGroup {
     // of travel has on the overall snap duration.
     float distanceInfluenceForSnapDuration(float f) {
         f -= 0.5f; // center the values about 0.
-        f *= 0.3f * Math.PI / 2.0f;
+        f *= (float) (0.3f * Math.PI / 2.0f);
         return (float) Math.sin(f);
     }
 
@@ -845,7 +845,8 @@ public class PageView extends ViewGroup {
         final int N = mAdapter.getCount();
         final int endPos = Math.min(N - 1, mCurItem + pageLimit);
 
-        /*if (N != mExpectedAdapterCount) {
+        /*注释
+        if (N != mExpectedAdapterCount) {
          String resName;
          try {
          resName = getResources().getResourceName(getId());
@@ -1472,7 +1473,7 @@ public class PageView extends ViewGroup {
     }
 
     private boolean pageScrolled(int xpos) {
-        if (mItems.size() == 0) {
+        if (mItems.isEmpty()) {
             mCalledSuper = false;
             onPageScrolled(0, 0, 0);
             if (!mCalledSuper) {
@@ -2064,7 +2065,7 @@ public class PageView extends ViewGroup {
             targetPage = (int) (currentPage + pageOffset + truncator);
         }
 
-        if (mItems.size() > 0) {
+        if (!mItems.isEmpty()) {
             final ItemInfo firstItem = mItems.get(0);
             final ItemInfo lastItem = mItems.get(mItems.size() - 1);
 
@@ -2122,7 +2123,7 @@ public class PageView extends ViewGroup {
         super.onDraw(canvas);
 
         // Draw the margin drawable between pages if needed.
-        if (mPageMargin > 0 && mMarginDrawable != null && mItems.size() > 0 && mAdapter != null) {
+        if (mPageMargin > 0 && mMarginDrawable != null && !mItems.isEmpty() && mAdapter != null) {
             final int scrollX = getScrollX();
             final int width = getWidth();
 
@@ -2241,6 +2242,21 @@ public class PageView extends ViewGroup {
 
         mLastMotionX += xOffset;
 
+        float scrollX = getScrollX(xOffset);
+        // Don't lose the rounded component
+        mLastMotionX += scrollX - (int) scrollX;
+        scrollTo((int) scrollX, getScrollY());
+        pageScrolled((int) scrollX);
+
+        // Synthesize an event for the VelocityTracker.
+        final long time = SystemClock.uptimeMillis();
+        final MotionEvent ev = MotionEvent.obtain(mFakeDragBeginTime, time, MotionEvent.ACTION_MOVE,
+                mLastMotionX, 0, 0);
+        mVelocityTracker.addMovement(ev);
+        ev.recycle();
+    }
+
+    private float getScrollX(float xOffset) {
         float oldScrollX = getScrollX();
         float scrollX = oldScrollX - xOffset;
         final int width = getClientWidth();
@@ -2262,17 +2278,7 @@ public class PageView extends ViewGroup {
         } else if (scrollX > rightBound) {
             scrollX = rightBound;
         }
-        // Don't lose the rounded component
-        mLastMotionX += scrollX - (int) scrollX;
-        scrollTo((int) scrollX, getScrollY());
-        pageScrolled((int) scrollX);
-
-        // Synthesize an event for the VelocityTracker.
-        final long time = SystemClock.uptimeMillis();
-        final MotionEvent ev = MotionEvent.obtain(mFakeDragBeginTime, time, MotionEvent.ACTION_MOVE,
-                mLastMotionX, 0, 0);
-        mVelocityTracker.addMovement(ev);
-        ev.recycle();
+        return scrollX;
     }
 
     /**
@@ -2402,16 +2408,14 @@ public class PageView extends ViewGroup {
                     handled = arrowScroll(FOCUS_RIGHT);
                     break;
                 case KeyEvent.KEYCODE_TAB:
-                    if (Build.VERSION.SDK_INT >= 11) {
-                        // The focus finder had a bug handling FOCUS_FORWARD and FOCUS_BACKWARD
-                        // before Android 3.0. Ignore the tab key on those devices.
-                        if (event.hasNoModifiers()) {
+                    // The focus finder had a bug handling FOCUS_FORWARD and FOCUS_BACKWARD
+                    // before Android 3.0. Ignore the tab key on those devices.
+                    if (event.hasNoModifiers()) {
                             handled = arrowScroll(FOCUS_FORWARD);
                         } else if (event.hasModifiers(KeyEvent.META_SHIFT_ON)) {
                             handled = arrowScroll(FOCUS_BACKWARD);
                         }
-                    }
-                    break;
+    break;
             }
         }
         return handled;

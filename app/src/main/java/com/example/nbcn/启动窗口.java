@@ -1,12 +1,14 @@
 package com.example.nbcn;
 
 
+import lbchs.应用操作;
+
 import android.app.Activity;
 
 import android.os.Bundle;
 
 import lbchs.可视化组件;
-import lbchs.应用操作;
+
 import lbchs.按钮;
 import lbchs.窗口;
 import lbchs.编辑框;

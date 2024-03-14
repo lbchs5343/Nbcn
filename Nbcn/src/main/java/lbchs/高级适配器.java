@@ -49,6 +49,7 @@ public class 高级适配器
         if (组件容器2 != null) {
             return 组件容器2.取根组件().getView();
         }
+
         return null;
     }
 

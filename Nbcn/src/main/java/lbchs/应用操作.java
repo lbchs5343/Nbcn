@@ -28,10 +28,13 @@ import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.content.pm.ResolveInfo;
 import android.net.Uri;
+import android.os.Build;
+import android.util.Log;
 import android.widget.Toast;
 
 import java.io.File;
 import java.util.List;
+import java.util.Objects;
 
 public class 应用操作 {
     public static void 弹出提示(Context context, Object object) {
@@ -120,12 +123,13 @@ public class 应用操作 {
     public static void 打开应用(Activity activity, String string) {
         String string2 = null;
         PackageManager packageManager = activity.getPackageManager();
-        Intent intent = new Intent("android.intent.action.MAIN");
-        intent.addCategory("android.intent.category.LAUNCHER");
+
+        Intent intent = new Intent(Intent.ACTION_MAIN);
+        intent.addCategory(Intent.CATEGORY_LAUNCHER);
         intent.setFlags(Intent.FLAG_ACTIVITY_RESET_TASK_IF_NEEDED | Intent.FLAG_ACTIVITY_NEW_TASK);
 
 
-        @SuppressLint("WrongConstant") List<ResolveInfo> list = packageManager.queryIntentActivities(intent, PackageManager.GET_ACTIVITIES);
+         List<ResolveInfo> list = packageManager.queryIntentActivities(intent, 1);
         for (int i = 0; i < list.size(); ++i) {
             ResolveInfo resolveInfo = list.get(i);
             if (!resolveInfo.activityInfo.packageName.equals(string)) {

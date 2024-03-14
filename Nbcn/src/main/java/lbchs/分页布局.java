@@ -30,7 +30,7 @@ public class 分页布局
         super(context);
         this.adapter = new ArrayPageAdapter();
         this.getView().setAdapter(this.adapter);
-        this.getView().setOnPageChangeListener(new PageView.OnPageChangeListener() {
+        this.getView().addOnPageChangeListener(new PageView.OnPageChangeListener() {
 
             @Override
             public void onPageChange(View view, int n) {
@@ -156,6 +156,7 @@ public class 分页布局
 
     @Override
     public void 初始化事件() {
+        super.初始化事件();
     }
 
     public interface 滑动状态改变 {
