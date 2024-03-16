@@ -27,6 +27,8 @@ import android.graphics.drawable.StateListDrawable;
 import android.graphics.drawable.shapes.RoundRectShape;
 import android.os.Build;
 
+import lbchs.view.可视化组件;
+
 public class 组件样式类 {
     public static void 置水波纹样式(可视化组件 可视化组件2, float f, int n, int n2) {
         int[][] nArrayArray = new int[][]{{16842919}, {16842908}, {16843518}, new int[0]};

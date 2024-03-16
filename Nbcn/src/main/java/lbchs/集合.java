@@ -14,7 +14,6 @@ package lbchs;
 
 import java.util.ArrayList;
 import java.util.Collections;
-import java.util.List;
 
 public class 集合<通用型> extends ArrayList {
     public void 添加项目(通用型  通用型) {

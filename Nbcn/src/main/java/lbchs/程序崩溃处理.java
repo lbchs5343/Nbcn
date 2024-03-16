@@ -23,6 +23,8 @@ import android.os.Looper;
 
 import java.io.File;
 
+import lbchs.utils.FileUtils;
+
 public class 程序崩溃处理
         implements Thread.UncaughtExceptionHandler {
     private static  final 程序崩溃处理 INSTANCE = new 程序崩溃处理();

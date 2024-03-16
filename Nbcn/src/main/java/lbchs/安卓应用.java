@@ -12,7 +12,7 @@
  */
 package lbchs;
 
-import static lbchs.上下文操作.置全局上下文;
+import static lbchs.utils.上下文操作.置全局上下文;
 
 import android.app.Activity;
 import android.app.Application;

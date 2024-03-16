@@ -53,6 +53,15 @@ import android.widget.Toast;
 
 import java.io.InputStream;
 
+import lbchs.utils.存储卡操作;
+import lbchs.view.单选对话框;
+import lbchs.view.可视化组件;
+import lbchs.view.对话框;
+import lbchs.view.日期选择框;
+import lbchs.view.时间选择框;
+import lbchs.view.输入对话框;
+import lbchs.view.颜色选择框;
+
 public class 窗口 extends Activity {
     private Intent serviceIntent;
     private Menu menu;

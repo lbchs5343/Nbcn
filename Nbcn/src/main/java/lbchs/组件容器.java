@@ -11,6 +11,20 @@ package lbchs;
 
 import java.util.LinkedHashMap;
 
+import lbchs.view.单选框;
+import lbchs.view.可视化组件;
+import lbchs.view.图片框;
+import lbchs.view.多选框;
+import lbchs.view.开关;
+import lbchs.view.拖动条;
+import lbchs.view.按钮;
+import lbchs.view.文本框;
+import lbchs.view.浏览框;
+import lbchs.view.编辑框;
+import lbchs.view.视频播放器;
+import lbchs.view.进度圈;
+import lbchs.view.进度条;
+
 public class 组件容器 {
     private final LinkedHashMap<String, 可视化组件> 哈希表1 = new LinkedHashMap<>();
 

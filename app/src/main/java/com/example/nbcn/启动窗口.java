@@ -1,18 +1,18 @@
 package com.example.nbcn;
 
 
-import lbchs.应用操作;
+import lbchs.utils.应用操作;
 
 import android.app.Activity;
 
 import android.os.Bundle;
 
-import lbchs.可视化组件;
+import lbchs.view.可视化组件;
 
-import lbchs.按钮;
+import lbchs.view.按钮;
 import lbchs.窗口;
-import lbchs.编辑框;
-import lbchs.自适应布局;
+import lbchs.view.编辑框;
+import lbchs.layout.自适应布局;
 
 public class 启动窗口 extends 窗口 {
     public 按钮 按钮1;

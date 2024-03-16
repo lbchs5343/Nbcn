@@ -23,6 +23,8 @@ import java.io.InputStream;
 import java.io.OutputStream;
 import java.net.Socket;
 
+import lbchs.view.组件;
+
 public class 套接字
         extends 组件 {
     private Socket socket;
